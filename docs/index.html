@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unicode to UTF-16 Translator</title>
+</head>
+<body>
+    <h1>Unicode to UTF-16 Translator</h1>
+    <form method="POST" action="/">
+        <label for="unicode_text">Enter Unicode text:</label><br>
+        <input type="text" name="unicode_text" id="unicode_text"><br>
+        <input type="submit" value="Translate">
+    </form>
+    {% if utf16_text %}
+    <h2>Result:</h2>
+    <p>{{ utf16_text }}</p>
+    {% endif %}
+</body>
+</html>
