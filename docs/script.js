@@ -11,7 +11,10 @@ function translate() {
             var char = word.charAt(j);
             if (!['.', ',', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '{', '}', '[', ']', '"'].includes(char)) {
                 var utf16Char = char.charCodeAt(0).toString(16);
-                translatedWord += "\\u" + utf16Char.toUpperCase();
+                while (utf16Char.length < 4) {
+                    utf16Char = "0" + utf16Char;
+                }
+                translatedWord += "\\u" + utf16Char;
             }
         }
         result += translatedWord + " ";
