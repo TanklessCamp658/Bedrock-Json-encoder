@@ -1,22 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>UTF-16 Converter</title>
+    <title>Unicode to UTF-16 Translator</title>
 </head>
 <body>
-    <h1>UTF-16 Converter</h1>
-    {% if error %}
-    <p>{{ error }}</p>
-    {% endif %}
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept=".txt">
-        <br><br>
-        <input type="submit" value="Convert">
+    <h1>Unicode to UTF-16 Translator</h1>
+    <form action="/translate" method="POST">
+        <label for="text">Enter Unicode text:</label>
+        <input type="text" id="text" name="text">
+        <button type="submit">Translate</button>
     </form>
-
-    {% if output_file %}
-    <h2>Result:</h2>
-    <a href="{{ url_for('download_output') }}">Download Output</a>
-    {% endif %}
 </body>
 </html>
