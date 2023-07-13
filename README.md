@@ -1,4 +1,4 @@
-# Bedrock JSON encoder
+# Minecraft Bedrock JSON encoder
 Encoder for Minecraft JSON Addons (and other file extensions)
 Made by tanklesscamp658
 
