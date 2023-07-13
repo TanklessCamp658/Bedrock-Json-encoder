@@ -8,10 +8,15 @@
     {% if error %}
     <p>{{ error }}</p>
     {% endif %}
-    <form method="POST" enctype="multipart/form-data" action="https://tanklesscamp658.github.io/Bedrock-Json-encoder/">
+    <form method="POST" enctype="multipart/form-data">
         <input type="file" name="file" accept=".txt">
         <br><br>
         <input type="submit" value="Convert">
     </form>
+
+    {% if output_file %}
+    <h2>Result:</h2>
+    <a href="{{ output_file }}" download>Download Output</a>
+    {% endif %}
 </body>
 </html>
