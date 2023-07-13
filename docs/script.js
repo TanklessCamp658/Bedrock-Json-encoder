@@ -20,5 +20,5 @@ function translate() {
         result += translatedWord + " ";
     }
 
-    utf16Result.textContent = result.trim();
+    utf16Result.innerText = result.trim();
 }
