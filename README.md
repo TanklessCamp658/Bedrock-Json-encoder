@@ -1,5 +1,5 @@
-# Bedrock-Json-encoder
-Encoder for Minecraft Json Addons
+# Bedrock JSON encoder
+Encoder for Minecraft JSON Addons (and other file extensions)
 Made by tanklesscamp658
 
 It is very simple to use this program. 2 ways to use the program:
