@@ -1,7 +1,3 @@
-from flask import Flask, render_template, request
-
-app = Flask(__name__)
-
 def translate_to_utf16(text):
     result = ""
     for char in text:
@@ -10,13 +6,13 @@ def translate_to_utf16(text):
             result += f"\\u{utf16_char.upper()}"
     return result
 
-@app.route('/', methods=['GET', 'POST'])
-def home():
-    if request.method == 'POST':
-        unicode_text = request.form['unicode_text']
-        utf16_text = translate_to_utf16(unicode_text)
-        return render_template('index.html', utf16_text=utf16_text)
-    return render_template('index.html')
+# Example usage
+unicode_text = input("Import your text here: ")
+utf16_text = translate_to_utf16(unicode_text)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+# Export the result to a text file
+file_path = "utf16_output.txt"  # Specify the file path
+with open(file_path, 'w', encoding='utf-8') as file:
+    file.write(utf16_text)
+
+print(f"Result exported to: {file_path}")
