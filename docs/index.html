@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JSON Encoder</title>
+  <script src="script.js"></script>
+  <style>
+    .output-box {
+      width: 100%;
+      height: 200px;
+      resize: vertical;
+    }
+  </style>
+</head>
+<body>
+  <h1>JSON Encoder</h1>
+<p>This program is made to encode JSON and other text files to UTF-16 Unicode.</p>
+<p>Made by tanklesscamp658.</p>
+<p>Consider subscribing for my channel: https://www.youtube.com/@tanklesscamp658.</p>
+<p>Donate: paypal.me/davidholguer (nah just ignore it, i dont need much money :D).</p>
+  <input type="file" id="inputFile" accept=".txt, .json, .java, .js">
+  <button onclick="translateFile()">Translate</button>
+  <div>
+    <textarea id="output" class="output-box" readonly></textarea>
+  </div>
+  <button onclick="exportToFile()">Export to...</button>
+</body>
+</html>
