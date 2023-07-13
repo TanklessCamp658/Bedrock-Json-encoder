@@ -20,21 +20,24 @@ def home():
     if request.method == 'POST':
         if 'file' not in request.files:
             return render_template('index.html', error='No file selected')
+
         file = request.files['file']
+
         if file.filename == '':
             return render_template('index.html', error='No file selected')
+
         if file:
             unicode_text = file.read().decode('utf-8')
             utf16_text = translate_to_utf16(unicode_text)
             utf16_text = utf16_text.replace("\\u0074\\u0072\\u0075\\u0065", "true")
             utf16_text = utf16_text.replace("\\u0066\\u0061\\u006C\\u0073\\u0065", "false")
+            
             output_file_path = os.path.join(app.config['UPLOAD_FOLDER'], 'output.txt')
+            output_file_relpath = os.path.relpath(output_file_path, app.root_path)
+
             with open(output_file_path, 'w', encoding='utf-8') as output_file:
                 output_file.write(utf16_text)
-            return send_file(output_file_path, as_attachment=True)
-    return render_template('index.html')
 
-if __name__ == '__main__':
-    app.config['UPLOAD_FOLDER'] = os.path.abspath('uploads')
-    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-    app.run()
+            return render_template('index.html', output_file=output_file_relpath)
+
+    return render_template('index.html')
