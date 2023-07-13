@@ -3,13 +3,19 @@ function translate() {
     var utf16Result = document.getElementById('utf16Result');
 
     var result = "";
-    for (var i = 0; i < unicodeText.length; i++) {
-        var char = unicodeText.charAt(i);
-        if (!['.', ',', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '{', '}', '[', ']', '"'].includes(char)) {
-            var utf16Char = char.charCodeAt(0).toString(16);
-            result += "\\u" + utf16Char.toUpperCase();
+    var words = unicodeText.split(" ");
+    for (var i = 0; i < words.length; i++) {
+        var word = words[i];
+        var translatedWord = "";
+        for (var j = 0; j < word.length; j++) {
+            var char = word.charAt(j);
+            if (!['.', ',', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '{', '}', '[', ']', '"'].includes(char)) {
+                var utf16Char = char.charCodeAt(0).toString(16);
+                translatedWord += "\\u" + utf16Char.toUpperCase();
+            }
         }
+        result += translatedWord + " ";
     }
 
-    utf16Result.textContent = result;
+    utf16Result.textContent = result.trim();
 }
