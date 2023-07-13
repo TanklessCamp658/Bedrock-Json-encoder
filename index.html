@@ -16,7 +16,7 @@
 
     {% if output_file %}
     <h2>Result:</h2>
-    <a href="{{ output_file }}" download>Download Output</a>
+    <a href="{{ url_for('download_output') }}">Download Output</a>
     {% endif %}
 </body>
 </html>
