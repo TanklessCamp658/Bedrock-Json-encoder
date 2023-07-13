@@ -45,7 +45,7 @@ function exportToFile() {
     return;
   }
 
-  const fileExtension = prompt("Enter the desired file extension (e.g., txt, json, java):");
+  const fileExtension = prompt("Enter the desired file extension (e.g., .txt, .json, .java, .mcfunction,...):");
   if (!fileExtension) {
     alert("Invalid file extension.");
     return;
