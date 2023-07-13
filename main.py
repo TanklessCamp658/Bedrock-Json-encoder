@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, send_file
 import os
+from flask import Flask, render_template, request, send_file
 
 app = Flask(__name__)
 
@@ -31,13 +31,19 @@ def home():
             utf16_text = translate_to_utf16(unicode_text)
             utf16_text = utf16_text.replace("\\u0074\\u0072\\u0075\\u0065", "true")
             utf16_text = utf16_text.replace("\\u0066\\u0061\\u006C\\u0073\\u0065", "false")
-            
-            output_file_path = os.path.join(app.config['UPLOAD_FOLDER'], 'output.txt')
-            output_file_relpath = os.path.relpath(output_file_path, app.root_path)
 
+            output_file_path = os.path.join(app.static_folder, 'output.txt')
             with open(output_file_path, 'w', encoding='utf-8') as output_file:
                 output_file.write(utf16_text)
 
-            return render_template('index.html', output_file=output_file_relpath)
+            return render_template('index.html', output_file=output_file_path)
 
     return render_template('index.html')
+
+@app.route('/output.txt')
+def download_output():
+    output_file_path = os.path.join(app.static_folder, 'output.txt')
+    return send_file(output_file_path, as_attachment=True)
+
+if __name__ == '__main__':
+    app.run()
